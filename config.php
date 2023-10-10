@@ -23,7 +23,7 @@ FoOtEr_Made_By_YuanTuo;
 const APP_ID = '250528';
 const DEBUG = false;
 
-const USING_DB = true;
+const USING_DB = false;
 const DbConfig = array("servername" => "mysql.sqlpub.com:3306", "username" => "bdwpspeed", "DBPassword" => "ed416fa5efc27454", "dbname" => "bdwpspeed", "dbtable" => "bdwp");
 
 const ADMIN_PASSWORD = 'aini1314';
