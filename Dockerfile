@@ -6,19 +6,19 @@ ENV DEBIAN_FRONTEND=noninteractive \
 
 RUN set -e \
     && apt-get update \
-    && apt-get install --no-install-recommends -y nginx git ca-certificates \
+    && apt-get install --no-install-recommends -y nginx git \
     && apt-get install --no-install-recommends -y \
     php php-curl php-fpm php7.4-mysql \
     && apt-get autoremove --purge \
     && rm -rf /var/lib/apt/lists/*
 
-COPY BDPHPRENDER.conf /etc/nginx/conf.d/
+COPY deploy.conf /etc/nginx/conf.d/
 COPY run.sh /root/
 RUN set -e \
     && rm /etc/nginx/sites-enabled/default \
     && chmod +x /root/run.sh \
-    && git clone https://github.com/cooliceycold/BDPHPRENDER.git /var/www/BDPHPRENDER \
-    && chmod -Rf 777 /var/www/BDPHPRENDER
+    && git clone https://github.com/cooliceycold/deploy.git /var/www/deploy \
+    && chmod -Rf 777 /var/www/deploy
 
 EXPOSE 80
 
