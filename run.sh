@@ -1,6 +1,6 @@
 #!/bin/sh
 
 set -e
-service php-fpm start
+service php7.4-fpm start
 nginx
 #！redis-server
