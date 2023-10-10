@@ -1,6 +1,6 @@
 services:
-    image: initdc/deploy
+    image: initdc/dddtest
     ports:
       - 80:80
     volumes:
-      - /Users/apple/data/files:/var/www/deploy/data/files
+      - /Users/apple/data/files:/var/www/dddtest/data/files
