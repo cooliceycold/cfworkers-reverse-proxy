@@ -2,5 +2,4 @@
 
 set -e
 service php7.4-fpm start
-nginx
 nginx-server
