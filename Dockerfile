@@ -12,6 +12,7 @@ RUN set -e \
     && apt-get autoremove --purge \
     && rm -rf /var/lib/apt/lists/*
 
+
 COPY dddtest.conf /etc/nginx/conf.d/
 COPY run.sh /root/
 RUN set -e \
