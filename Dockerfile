@@ -1,20 +1,25 @@
-FROM php:8.0-apache
+FROM ubuntu:20.04
 
-# Install CURL and MySQL extensions
-RUN apt-get update && \
-    apt-get install -y libcurl4-openssl-dev libpq-dev git && \
-    docker-php-ext-install pdo_mysql mysqli
+ENV DEBIAN_FRONTEND=noninteractive \
+    TZ=Asia/Shanghai
 
-WORKDIR /var/www/html
 
-# Clone the repository
-RUN rm -rf /var/www/html/* && \
-    git clone https://github.com/yuantuo666/baiduwp-php.git /tmp/baiduwp-php && \
-    cp -r /tmp/baiduwp-php/* /var/www/html/ && \
-    rm -rf /tmp/baiduwp-php
+RUN set -e \
+    && apt-get update \
+    && apt-get install --no-install-recommends -y nginx sqlite redis git ca-certificates \
+    && apt-get install --no-install-recommends -y \
+    php php-curl php-fpm php-gd php-json php-mbstring php-redis php-sqlite3 php-xml \
+    && apt-get autoremove --purge \
+    && rm -rf /var/lib/apt/lists/*
 
-# 配置 Apache 服务器
-RUN a2enmod rewrite
+COPY test.conf /etc/nginx/conf.d/
+COPY run.sh /root/
+RUN set -e \
+    && rm /etc/nginx/sites-enabled/default \
+    && chmod +x /root/run.sh \
+    && git clone https://github.com/cooliceycold/BDPHPRENDER.git /var/www/BDPHPRENDER \
+    && chmod -Rf 777 /var/www/BDPHPRENDER
 
-# 将容器的80端口暴露出来
 EXPOSE 80
+
+CMD ["/root/run.sh"]
