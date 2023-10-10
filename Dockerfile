@@ -12,13 +12,13 @@ RUN set -e \
     && apt-get autoremove --purge \
     && rm -rf /var/lib/apt/lists/*
 
-COPY deploy.conf /etc/nginx/conf.d/
+COPY dddtest.conf /etc/nginx/conf.d/
 COPY run.sh /root/
 RUN set -e \
     && rm /etc/nginx/sites-enabled/default \
     && chmod +x /root/run.sh \
-    && git clone https://github.com/cooliceycold/deploy.git /var/www/deploy \
-    && chmod -Rf 777 /var/www/deploy
+    && git clone https://github.com/cooliceycold/dddtest.git /var/www/dddtest \
+    && chmod -Rf 777 /var/www/dddtest
 
 EXPOSE 80
 
