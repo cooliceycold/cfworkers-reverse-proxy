@@ -8,7 +8,7 @@ RUN set -e \
     && apt-get update \
     && apt-get install --no-install-recommends -y nginx git ca-certificates \
     && apt-get install --no-install-recommends -y \
-    php php7.4-fpm php-json libcurl4-openssl-dev libpq-dev pdo_mysql mysqli \
+    php php7.4-fpm php-curl pdo_mysql  \
     && apt-get autoremove --purge \
     && rm -rf /var/lib/apt/lists/*
 
