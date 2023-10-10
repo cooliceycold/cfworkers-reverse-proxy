@@ -8,7 +8,7 @@ RUN set -e \
     && apt-get update \
     && apt-get install --no-install-recommends -y nginx sqlite redis git ca-certificates \
     && apt-get install --no-install-recommends -y \
-    php8.0 php-curl php8.0-fpm php-gd php-json php-mbstring php-redis php-sqlite3 php-xml \
+    php8.0 php8.0-curl php8.0-fpm php8.0-gd php8.0-json php8.0-mbstring php8.0-redis php8.0-sqlite3 php8.0-xml \
     && apt-get autoremove --purge \
     && rm -rf /var/lib/apt/lists/*
 
