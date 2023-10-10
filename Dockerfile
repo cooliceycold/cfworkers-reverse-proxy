@@ -12,7 +12,7 @@ RUN set -e \
     && apt-get autoremove --purge \
     && rm -rf /var/lib/apt/lists/*
 
-COPY test.conf /etc/nginx/conf.d/
+COPY BDPHPRENDER.conf /etc/nginx/conf.d/
 COPY run.sh /root/
 RUN set -e \
     && rm /etc/nginx/sites-enabled/default \
