@@ -6,9 +6,9 @@ ENV DEBIAN_FRONTEND=noninteractive \
 
 RUN set -e \
     && apt-get update \
-    && apt-get install --no-install-recommends -y nginx git mysql sqlite ca-certificates \
+    && apt-get install --no-install-recommends -y nginx git mysql ca-certificates \
     && apt-get install --no-install-recommends -y \
-    php php-curl php-fpm php-mysql php-sqlite3 php-xml php-gd php-json php-mbstring \
+    php php-curl php-fpm php-mysql php-xml \
     && apt-get autoremove --purge \
     && rm -rf /var/lib/apt/lists/*
 
