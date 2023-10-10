@@ -27,7 +27,7 @@ const USING_DB = true;
 const DbConfig = array("servername" => "mysql.sqlpub.com:3306", "username" => "bdwpspeed", "DBPassword" => "ed416fa5efc27454", "dbname" => "bdwpspeed", "dbtable" => "bdwp");
 
 const ADMIN_PASSWORD = 'aini1314';
-const DownloadTimes = 5;
+const DownloadTimes = 10;
 const DownloadLinkAvailableTime = 8;
 const SVIPSwitchMod = 0;
 
