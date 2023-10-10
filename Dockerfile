@@ -1,4 +1,4 @@
-FROM ubuntu:20.04
+FROM ubuntu:latest
 
 ENV DEBIAN_FRONTEND=noninteractive \
     TZ=Asia/Shanghai
@@ -6,9 +6,9 @@ ENV DEBIAN_FRONTEND=noninteractive \
 
 RUN set -e \
     && apt-get update \
-    && apt-get install --no-install-recommends -y nginx git ca-certificates \
+    && apt-get install --no-install-recommends -y nginx git mysql sqlite ca-certificates \
     && apt-get install --no-install-recommends -y \
-    php php-curl php-fpm php7.4-mysql \
+    php php-curl php-fpm php-mysql php-sqlite3 php-xml php-gd php-json php-mbstring \
     && apt-get autoremove --purge \
     && rm -rf /var/lib/apt/lists/*
 
