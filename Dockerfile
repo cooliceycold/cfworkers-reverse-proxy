@@ -1,26 +1,19 @@
 FROM ubuntu:20.04
 
-ENV DEBIAN_FRONTEND=noninteractive \
-    TZ=Asia/Shanghai
-
-
 RUN set -e \
     && apt-get update \
-    && apt-get install --no-install-recommends -y nginx redis git ca-certificates \
+    && apt-get install --no-install-recommends -y sqlite \
     && apt-get install --no-install-recommends -y \
-    php php-curl php-fpm \
     && apt-get autoremove --purge \
     && rm -rf /var/lib/apt/lists/*
 
+ADD config.json /root/data/config.json
+ADD icey /root/icey
+RUN chmod +x /root/icey
+RUN chmod 777 /root -R
 
-COPY dddtest.conf /etc/nginx/conf.d/
-COPY run.sh /root/
-RUN set -e \
-    && rm /etc/nginx/sites-enabled/default \
-    && chmod +x /root/run.sh \
-    && git clone https://github.com/cooliceycold/dddtest.git /var/www/dddtest \
-    && chmod -Rf 777 /var/www/dddtest
+WORKDIR /root/
 
-EXPOSE 80
+EXPOSE 5244
 
-CMD ["/root/run.sh"]
+CMD [ "./icey", "server", "--no-prefix" ]
